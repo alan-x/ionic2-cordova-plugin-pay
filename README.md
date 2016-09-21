@@ -9,3 +9,30 @@
 4. IOS微信支付       未文成
 
 
+---
+### 调用示例
+
+- 引入LyxPay： `import {StatusBar, Lyxpay,PayCallBack} from 'ionic-native';`
+- 继承 `PayCallBack`接口，重写`success`和`failure`方法
+
+    ```
+class CallBack implements PayCallBack{
+  success(): any {
+    alert("success");
+  }
+
+  failure(msg: string): any {
+    alert(msg);
+  }
+
+}
+
+
+    ```
+
+- 调用` Lyxpay.pay(1,data.text(),new CallBack());`
+    - 参数一是支付类型：1是支付宝，2是微信
+    - 参数二是支付字符串
+    - 参数三是重写的回调方法
+
+
