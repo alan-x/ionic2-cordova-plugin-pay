@@ -23,7 +23,12 @@
         <source-file src="src/android/Pay.java" target-dir="src/com/lyx/pay" />
         <source-file src="src/android/ali/Alipay.java" target-dir="src/com/lyx/pay/ali" />
         <source-file src="src/android/ali/PayResult.java" target-dir="src/com/lyx/pay/ali" />
+
+
         <source-file src="src/android/wx/Wxpay.java" target-dir="src/com/lyx/pay/wx" />
+        <source-file src="src/android/wx/AppRegister.java" target-dir="src/com/lyx/pay/wx" />
+        <source-file src="src/android/wx/WXPayEntryActivity.java" target-dir="src/net/sourceforge/simcpux/wxapi" />
+
         <source-file src="src/android/libs/alipaySdk-20160825.jar" target-dir="libs"/>
         <source-file src="src/android/libs/libammsdk.jar" target-dir="libs"/>
 
@@ -36,6 +41,20 @@
             <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
             <uses-permission android:name="android.permission.READ_PHONE_STATE" />
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
+
+
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+                <receiver android:name=".AppRegister">
+                    <intent-filter>
+                        <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
+                    </intent-filter>
+                </receiver>
+
+                <activity android:name="net.sourceforge.simcpux.wxapi.WXPayEntryActivity"></activity>
         </config-file>
     </platform>
 
@@ -53,7 +72,55 @@
             </feature>
         </config-file>
 
+        <!--<config-file target="*-Info.plist" parent="CFBundleURLTypes">-->
+            <!--<array>-->
+                <!--<dict>-->
+                    <!--<key>CFBundleURLName</key>-->
+                    <!--<string>weixin</string>-->
+                    <!--<key>CFBundleURLSchemes</key>-->
+                    <!--<array>-->
+                        <!--<string>wx4fd357e3019b6cd2</string>-->
+                    <!--</array>-->
+                    <!--<key>CFBundleURLName</key>-->
+                    <!--<string>ali</string>-->
+                    <!--<key>CFBundleURLSchemes</key>-->
+                    <!--<array>-->
+                        <!--<string>alisdkWeiNi</string>-->
+                    <!--</array>-->
+                <!--</dict>-->
+            <!--</array>-->
+        <!--</config-file>-->
+
+
         <header-file src="src/ios/Lyxpay.h" />
         <source-file src="src/ios/Lyxpay.m" />
+
+        <header-file src="src/ios/Pay/ZXWeniPay.h" />
+        <source-file src="src/ios/Pay/ZXWeniPay.m" />
+
+        <header-file src="src/ios/Pay/SDKExport/WXApi.h" />
+        <source-file src="src/ios/Pay/SDKExport/WXApiObject.h" />
+
+        <framework src="src/ios/lib/AlipaySDK.framework"  custom="true" />
+        <framework src="CoreTelephony.framework" weak="true" />
+        <framework src="Security.framework" weak="true" />
+        <framework src="SystemConfiguration.framework" weak="true" />
+        <framework src="QuartzCore.framework" weak="true" />
+        <framework src="CoreText.framework" weak="true" />
+        <framework src="CoreGraphics.framework" weak="true" />
+        <framework src="UIKit.framework" weak="true" />
+        <framework src="Foundation.framework" weak="true" />
+        <framework src="CFNetwork.framework" weak="true" />
+        <framework src="CoreMotion.framework" weak="true" />
+        <framework src="libc++.tbd" weak="true" />
+        <framework src="libz.tbd" weak="true" />
+        <framework src="libsqlite3.0.tbd" weak="true" />
+
+
+        <source-file src="src/ios/Pay/SDKExport/libWeChatSDK.a"  framework="true"  />
+
+
+
+
     </platform>
 </plugin>
