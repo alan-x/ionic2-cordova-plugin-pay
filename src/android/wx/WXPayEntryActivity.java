@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.lyx.pay.wx.Wxpay;
+import com.tencent.mm.sdk.constants.ConstantsAPI;
 import com.tencent.mm.sdk.modelbase.BaseReq;
 import com.tencent.mm.sdk.modelbase.BaseResp;
 import com.tencent.mm.sdk.openapi.IWXAPI;
@@ -47,7 +48,7 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
     @Override
     public void onResp(BaseResp baseResp) {
         Log.e("type", baseResp.getType() + "");
-        if (baseResp.getType() == 0) {
+        if (baseResp.getType() == ConstantsAPI.COMMAND_PAY_BY_WX) {
             Wxpay.callbackContext.success();
         } else {
             Wxpay.callbackContext.error("error");
