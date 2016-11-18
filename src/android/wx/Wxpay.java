@@ -14,11 +14,16 @@ import org.json.JSONObject;
 /**
  * Created by FollowWinter on 9/15/16.
  */
-public class Wxpay extends Pay{
+public class Wxpay extends Pay {
     private IWXAPI api;
     public final static String APP_ID = "wx4fd357e3019b6cd2";
+    public static CallbackContext callbackContext;
+
     @Override
     public void pay(CordovaInterface cordova, String param, CallbackContext callbackContext) {
+        if (this.callbackContext == null) {
+            this.callbackContext = callbackContext;
+        }
         api = WXAPIFactory.createWXAPI(cordova.getActivity(), APP_ID);
         try {
             JSONObject json = new JSONObject(param);
@@ -31,7 +36,7 @@ public class Wxpay extends Pay{
             req.packageValue = json.getString("package");
             req.sign = json.getString("sign");
             api.sendReq(req);
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 

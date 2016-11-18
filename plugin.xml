@@ -29,6 +29,7 @@
         <source-file src="src/android/wx/AppRegister.java" target-dir="src/com/lyx/pay/wx" />
         <source-file src="src/android/wx/WXPayEntryActivity.java" target-dir="src/com/weni/shop/wxapi" />
 
+
         <source-file src="src/android/libs/alipaySdk-20160825.jar" target-dir="libs"/>
         <source-file src="src/android/libs/libammsdk.jar" target-dir="libs"/>
 
@@ -42,19 +43,18 @@
             <uses-permission android:name="android.permission.READ_PHONE_STATE" />
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-
-
-
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
-                <receiver android:name=".AppRegister">
+                <receiver android:name="com.lyx.pay.wx.AppRegister">
                     <intent-filter>
                         <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
                     </intent-filter>
                 </receiver>
-
-                <activity android:name="com.weni.shop.wxapi.WXPayEntryActivity"></activity>
+            <activity
+                    android:name=".wxapi.WXPayEntryActivity"
+                    android:exported="true"
+                    android:screenOrientation="portrait" />
         </config-file>
     </platform>
 
