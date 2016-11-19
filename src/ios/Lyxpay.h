@@ -7,8 +7,8 @@
 //
 
 #import <Cordova/CDVPlugin.h>
-
-@interface Lyxpay : CDVPlugin
+#import "WXApi.h"
+@interface Lyxpay : CDVPlugin <WXApiDelegate>
 
 - (void)pay:(CDVInvokedUrlCommand*)command;
 
