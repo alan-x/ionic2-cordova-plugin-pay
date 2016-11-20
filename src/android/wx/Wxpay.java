@@ -21,9 +21,7 @@ public class Wxpay extends Pay {
 
     @Override
     public void pay(CordovaInterface cordova, String param, CallbackContext callbackContext) {
-        if (this.callbackContext == null) {
-            this.callbackContext = callbackContext;
-        }
+        this.callbackContext = callbackContext;
         api = WXAPIFactory.createWXAPI(cordova.getActivity(), APP_ID);
         try {
             JSONObject json = new JSONObject(param);
