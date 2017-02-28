@@ -10,8 +10,8 @@ import com.tencent.mm.sdk.modelbase.BaseReq;
 import com.tencent.mm.sdk.modelbase.BaseResp;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.IWXAPIEventHandler;
-
 import android.app.Activity;
+import com.lyx.pay.wx.Wxpay;
 
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
 
@@ -27,7 +27,7 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        api = WXAPIFactory.createWXAPI(this, "wx4fd357e3019b6cd2");
+        api = WXAPIFactory.createWXAPI(this, Wxpay.APP_ID);
         api.handleIntent(getIntent(), this);
         finish();
     }

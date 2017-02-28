@@ -16,7 +16,7 @@ import org.json.JSONObject;
  */
 public class Wxpay extends Pay {
     private IWXAPI api;
-    public final static String APP_ID = "wx4fd357e3019b6cd2";
+    public final static String APP_ID = "<APP_ID>";
     public static CallbackContext callbackContext;
 
     @Override
